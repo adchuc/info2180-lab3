@@ -18,6 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
             gameState[index] = currentPlayer; // update game state
 
             playerX = !playerX; // switch turns
+
+         square.addEventListener('mouseenter', () => {
+            square.classList.add('hover');
+         }); 
+
+         square.addEventListener('mouseleave', () => {
+            square.classList.remove('hover');
          });
+        });
     });
 });
