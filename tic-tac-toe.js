@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     const board = document.getElementById('board');
     const squares = board.querySelectorAll('div');
+    const statusDiv = document.getElementById('status');
+    const newGameButton = document.querySelector('.btn');
 
     let gameState = Array(9).fill(null); // to track the state of the game
-
     let playerX = true; // true for X, false for O
 
     const winningCombinations = [
@@ -25,7 +26,15 @@ document.addEventListener('DOMContentLoaded', () => {
     squares.forEach((square, index) => {
         square.classList.add('square');
 
-        square.addEventListener('click', () => {
+         square.addEventListener('mouseenter', () => {
+            square.classList.add('hover'); 
+         }); 
+
+         square.addEventListener('mouseleave', () => {
+            square.classList.remove('hover');
+         });
+
+         square.addEventListener('click', () => {
         if (gameState[index] !== null || checkWinner() !== null) 
             return;
 
@@ -44,16 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
             } else{
                 playerX = !playerX;
             }
-
-         square.addEventListener('mouseenter', () => {
-            square.classList.add('hover'); 
-         }); 
-
-         square.addEventListener('mouseleave', () => {
-            square.classList.remove('hover');
-         });
+        });
     });
-});
 
     newGameButton.addEventListener('click', () => {
         gameState = Array(9).fill(null);
