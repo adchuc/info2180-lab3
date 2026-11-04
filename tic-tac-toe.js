@@ -6,30 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let playerX = true; // true for X, false for O
 
-    squares.forEach((square, index) => {
-        square.classList.add('square');
-
-        square.addEventListener('click', () => {
-            const currentPlayer = playerX ? 'X' : 'O';
-
-            square.textContent = currentPlayer;
-            square.classList.add(currentPlayer);
-
-            gameState[index] = currentPlayer; // update game state
-
-            playerX = !playerX; // switch turns
-
-         square.addEventListener('mouseenter', () => {
-            square.classList.add('hover'); 
-         }); 
-
-         square.addEventListener('mouseleave', () => {
-            square.classList.remove('hover');
-         });
-        });
-    });
-
-     const winningCombinations = [
+    const winningCombinations = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8], // rows
         [0, 3, 6], [1, 4, 7], [2, 5, 8], // columns
         [0, 4, 8], [2, 4, 6] // diagonals
@@ -45,23 +22,36 @@ document.addEventListener('DOMContentLoaded', () => {
         return null;
     }
 
-    square.addEventListener('click', () => {
+    squares.forEach((square, index) => {
+        square.classList.add('square');
+
+        square.addEventListener('click', () => {
         if (gameState[index] !== null || checkWinner() !== null) 
             return;
-        }
 
-        const currentPlayer = playerX ? 'X' : 'O';
-        square.textContent = currentPlayer;
-        square.classList.add(currentPlayer);
+            const currentPlayer = playerX ? 'X' : 'O';
 
-        gameState[index] = currentPlayer;
+            square.textContent = currentPlayer;
+            square.classList.add(currentPlayer);
+
+            gameState[index] = currentPlayer; // update game state
         
-        const winner = checkWinner();
-        if (winner) {
-            statusDiv.textContent = 'Congratulations! ${winner} is the Winner!';
-            statusDiv.classList.add('you-won');
+            const winner = checkWinner();
+            if (winner) {
+                statusDiv.textContent = `Congratulations! ${winner} is the Winner!`;
+                statusDiv.classList.add('you-won');
 
-        } else{
-            playerX = !playerX;
-        }    
+            } else{
+                playerX = !playerX;
+            }
+
+         square.addEventListener('mouseenter', () => {
+            square.classList.add('hover'); 
+         }); 
+
+         square.addEventListener('mouseleave', () => {
+            square.classList.remove('hover');
+         });
+    });
+});
 });
