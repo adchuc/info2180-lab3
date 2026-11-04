@@ -54,4 +54,18 @@ document.addEventListener('DOMContentLoaded', () => {
          });
     });
 });
+
+    newGameButton.addEventListener('click', () => {
+        gameState = Array(9).fill(null);
+        playerX = true;
+
+        squares.forEach(square => {
+            square.textContent = '';
+            square.classList.remove('X', 'O');
+        });
+
+        statusDiv.textContent = '';
+        statusDiv.classList.remove('you-won');
+    });
+
 });
