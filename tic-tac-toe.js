@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
             const winner = checkWinner();
             if (winner) {
-                statusDiv.textContent = `Congratulations! ${winner} is the Winner!`;
+                statusDiv.textContent = "Congratulations! " + winner + " is the Winner!";
                 statusDiv.classList.add('you-won');
 
             } else{
