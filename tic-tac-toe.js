@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             square.classList.remove('X', 'O');
         });
 
-        statusDiv.textContent = '';
+        statusDiv.textContent = 'Move your mouse over a square and click to play an X or an O.';
         statusDiv.classList.remove('you-won');
     });
 
